@@ -635,8 +635,7 @@ class FormPlugin extends Plugin
 
             if (isset($this->forms[$page_route])) {
                 $forms = $this->forms[$page_route];
-                $first_form = array_shift($forms);
-                $form_name = $first_form['name'];
+                return array_shift($forms);
             } else {
                 //No form on this route. Try looking up in the current page first
                 return new Form($this->grav['page']);
