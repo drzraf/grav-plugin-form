@@ -95,7 +95,7 @@
                         </div>
                     {% endblock %}
                 {% endblock %}
-                {% if field.description %}
+                {% if field.description is defined %}
                     <div class="form-extra-wrapper {{ field.size|e }} {{ field.wrapper_classes }}">
                         <span class="form-description">
                             {% if field.markdown %}
