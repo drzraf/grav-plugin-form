@@ -4,7 +4,7 @@
 
 {% include 'partials/form-messages.html.twig' %}
 
-{% set scope = scope ?: 'data.' %}
+{% set scope = scope ? : form.scope is defined ? form.scope : 'data.' %}
 {% set multipart = '' %}
 {% set blueprints = blueprints ?? form.blueprint() %}
 {% set method = form.method|upper|default('POST') %}
@@ -53,6 +53,9 @@
       {% endblock %}
       {% if form.novalidate %}novalidate{% endif %}
       {% if form.keep_alive %}data-grav-keepalive="true"{% endif %}
+      {% for k, v in form.data.blueprints.form %}
+        {% if k starts with 'data-' %}{{ k }}="{{ v|e }}"{% endif %}
+      {% endfor %}
 >
 
   {% block inner_markup_fields_start %}{% endblock %}
